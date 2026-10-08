@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>YKW Calculator — Scientific Intelligence</title>
+<meta name="author" content="Hashir · Nexlyr Solutions">
+<meta name="description" content="YKW Calculator — a scientific calculator with graphing, science tools and an AI assistant. Built by Nexlyr Solutions.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
 
@@ -20,6 +22,7 @@
   --glow:rgba(0,200,255,0.1);--glow2:rgba(0,200,255,0.05);
   --shadow:0 8px 32px rgba(0,0,0,0.5);
   --radius:10px;--radius-sm:6px;
+  --ftH:34px; /* footer / Nexlyr strip height */
 }
 body.kawaii{--bg:#fff0f8;--bg2:#ffe4f0;--bg3:#ffd6ec;--panel:rgba(255,235,248,0.95);--panel2:rgba(255,225,245,0.88);--border:rgba(255,100,180,0.3);--border2:rgba(255,100,180,0.12);--acc:#ff69b4;--acc2:#9b59b6;--acc3:#ff8c42;--acc4:#44dd88;--text:#5a2040;--textd:rgba(90,32,64,0.5);--textb:#3d1020;--green:#44dd88;--red:#e74c3c;--glow:rgba(255,105,180,0.12);--glow2:rgba(255,105,180,0.05);}
 body.rosegold{--bg:#140608;--bg2:#220e12;--bg3:#2e1218;--panel:rgba(30,10,16,0.93);--panel2:rgba(36,12,18,0.85);--border:rgba(225,160,110,0.25);--border2:rgba(225,160,110,0.1);--acc:#e8a85c;--acc2:#c06880;--acc3:#f5d090;--acc4:#80e870;--text:#f0d8c0;--textd:rgba(240,216,192,0.5);--textb:#fff0e0;--green:#80e870;--red:#ff6b6b;--glow:rgba(232,168,92,0.12);--glow2:rgba(232,168,92,0.05);}
@@ -63,11 +66,11 @@ button{cursor:pointer;}
 .cor{position:fixed;width:16px;height:16px;z-index:5;pointer-events:none;transition:border-color 0.4s;}
 .cor.tl{top:6px;left:6px;border-top:1.5px solid var(--acc);border-left:1.5px solid var(--acc);}
 .cor.tr{top:6px;right:6px;border-top:1.5px solid var(--acc);border-right:1.5px solid var(--acc);}
-.cor.bl{bottom:28px;left:6px;border-bottom:1.5px solid var(--acc);border-left:1.5px solid var(--acc);}
-.cor.br{bottom:28px;right:6px;border-bottom:1.5px solid var(--acc);border-right:1.5px solid var(--acc);}
+.cor.bl{bottom:calc(var(--ftH) + 4px);left:6px;border-bottom:1.5px solid var(--acc);border-left:1.5px solid var(--acc);}
+.cor.br{bottom:calc(var(--ftH) + 4px);right:6px;border-bottom:1.5px solid var(--acc);border-right:1.5px solid var(--acc);}
 
 /* ─── MAIN APP ─── */
-#app{position:relative;z-index:10;display:flex;flex-direction:column;height:calc(100vh - 24px);}
+#app{position:relative;z-index:10;display:flex;flex-direction:column;height:calc(100vh - var(--ftH));}
 
 /* ─── TOPBAR ─── */
 #topbar{display:flex;align-items:center;padding:0 16px;gap:10px;height:50px;flex-shrink:0;border-bottom:1px solid var(--border);background:rgba(2,4,8,0.96);backdrop-filter:blur(24px);position:relative;z-index:50;}
@@ -311,14 +314,14 @@ button{cursor:pointer;}
 .notif-sub{font-size:9px;color:var(--textd);margin-top:1px;}
 
 /* Achievement badge */
-#acht{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(90px);background:rgba(3,9,24,0.97);border:1px solid var(--acc3);border-radius:11px;padding:11px 18px;display:flex;gap:11px;align-items:center;backdrop-filter:blur(20px);box-shadow:0 0 28px rgba(240,165,0,0.2);transition:transform 0.4s cubic-bezier(.175,.885,.32,1.275);z-index:700;white-space:nowrap;}
+#acht{position:fixed;bottom:calc(var(--ftH) + 6px);left:50%;transform:translateX(-50%) translateY(90px);background:rgba(3,9,24,0.97);border:1px solid var(--acc3);border-radius:11px;padding:11px 18px;display:flex;gap:11px;align-items:center;backdrop-filter:blur(20px);box-shadow:0 0 28px rgba(240,165,0,0.2);transition:transform 0.4s cubic-bezier(.175,.885,.32,1.275);z-index:700;white-space:nowrap;}
 #acht.on{transform:translateX(-50%) translateY(0);}
 .a-ic{font-size:20px;}
 .a-tl{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--acc3);text-transform:uppercase;}
 .a-nm{font-size:12px;font-weight:700;color:var(--textb);margin-top:1px;}
 
 /* Arcade FAB */
-#arcade-fab{position:fixed;bottom:28px;right:16px;z-index:300;width:48px;height:48px;border-radius:13px;background:linear-gradient(135deg,var(--acc2),var(--acc));border:none;font-size:20px;box-shadow:0 4px 20px rgba(0,0,0,0.4),0 0 20px var(--glow);animation:fabfloat 3s ease-in-out infinite;}
+#arcade-fab{position:fixed;bottom:calc(var(--ftH) + 10px);right:16px;z-index:300;width:48px;height:48px;border-radius:13px;background:linear-gradient(135deg,var(--acc2),var(--acc));border:none;font-size:20px;box-shadow:0 4px 20px rgba(0,0,0,0.4),0 0 20px var(--glow);animation:fabfloat 3s ease-in-out infinite;}
 @keyframes fabfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 #arcade-fab:hover{animation:none;transform:scale(1.1);box-shadow:0 8px 30px rgba(0,0,0,0.5),0 0 30px var(--glow);}
 .fbadge{position:absolute;top:-5px;right:-5px;width:17px;height:17px;border-radius:50%;background:var(--acc3);color:#000;font-size:8px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--bg);}
@@ -370,11 +373,39 @@ button{cursor:pointer;}
 .to-sb{font-size:8px;color:var(--textd);margin-top:1px;}
 
 /* Footer */
-#footer{position:fixed;bottom:0;left:0;right:0;z-index:20;height:24px;display:flex;align-items:center;justify-content:center;gap:14px;background:rgba(2,4,8,0.88);border-top:1px solid var(--border);backdrop-filter:blur(12px);pointer-events:none;}
-.ft-txt{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--textd);}
-.ft-sep{width:1px;height:10px;background:var(--border);}
-.ft-link{pointer-events:all;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--textd);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color 0.2s;}
+#footer{position:fixed;bottom:0;left:0;right:0;z-index:20;height:var(--ftH);display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0 14px;background:rgba(2,4,8,0.9);border-top:1px solid var(--border);backdrop-filter:blur(12px);pointer-events:none;}
+.ft-l{display:flex;align-items:center;gap:14px;min-width:0;}
+.ft-txt{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--textd);white-space:nowrap;}
+.ft-sep{width:1px;height:10px;background:var(--border);flex-shrink:0;}
+.ft-link{pointer-events:all;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--textd);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color 0.2s;white-space:nowrap;}
 .ft-link:hover{color:var(--acc);}
+
+/* ═══════════════════════════════════════
+   NEXLYR — studio credit. A mark, a name, one button.
+   Sits in Nexlyr's own black in every theme.
+═══════════════════════════════════════ */
+.nxb{pointer-events:auto;flex-shrink:0;display:flex;align-items:center;gap:10px;height:calc(var(--ftH) - 8px);padding:0 3px 0 10px;border-radius:8px;background:linear-gradient(140deg,#04070c,#0A1420 60%,#04070c);border:1px solid rgba(0,212,255,.26);box-shadow:0 6px 18px rgba(0,0,0,.35);}
+.nxb__id{display:inline-flex;align-items:center;gap:7px;height:100%;text-decoration:none;opacity:.92;transition:opacity .3s;}
+.nxb__id:hover{opacity:1;}
+.nxb__mk{width:11px;height:15px;display:block;flex-shrink:0;overflow:visible;}
+.nxb__mk rect{transform-box:fill-box;transform-origin:top;}
+.nxb__id:hover .nxb__mk rect{animation:nxeq .7s cubic-bezier(.3,.7,.3,1);}
+.nxb__mk rect:nth-child(2){animation-delay:.05s!important;}
+.nxb__mk rect:nth-child(3){animation-delay:.1s!important;}
+.nxb__mk rect:nth-child(4){animation-delay:.15s!important;}
+.nxb__mk rect:nth-child(5){animation-delay:.2s!important;}
+@keyframes nxeq{0%,100%{transform:none}45%{transform:scaleY(.62)}}
+.nxb__nm{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:9.5px;letter-spacing:.22em;background:linear-gradient(96deg,#00D4FF,#8FEBFF 55%,#00D4FF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.nxb__go{display:inline-flex;align-items:center;gap:5px;height:calc(100% - 6px);padding:0 10px;border-radius:6px;text-decoration:none;font-size:10.5px;font-weight:600;color:#04070c;background:linear-gradient(120deg,#00D4FF,#66E4FF);transition:transform .25s,box-shadow .25s;white-space:nowrap;}
+.nxb__go:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,212,255,.34);}
+.nxb__go svg{width:11px;height:11px;flex-shrink:0;}
+@media(prefers-reduced-motion:reduce){.nxb__id:hover .nxb__mk rect{animation:none;}.nxb__go:hover{transform:none;}}
+
+/* Loader credit */
+.ld-by{position:absolute;left:0;right:0;bottom:34px;display:flex;align-items:center;justify-content:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:4px;color:rgba(200,224,240,0.38);opacity:0;animation:ldby .9s .35s ease forwards;}
+.ld-by svg{width:10px;height:14px;display:block;}
+.ld-by b{font-size:10px;font-weight:700;letter-spacing:.28em;background:linear-gradient(96deg,#00D4FF,#8FEBFF 55%,#00D4FF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+@keyframes ldby{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
 /* ═══════════════════════
    RESPONSIVE
@@ -384,7 +415,8 @@ button{cursor:pointer;}
   #sidebar,#rpanel,#bot{display:none;}
   .cor,.gridov{display:none;}
   .ttabs,.tb-sep,.live-pill{display:none;}
-  #app{height:calc(100vh - 72px);}
+  :root{--ftH:40px;}
+  #app{height:calc(100vh - 48px - var(--ftH));}
   #topbar{height:46px;padding:0 10px;gap:8px;}
   .logo-name{font-size:11px;letter-spacing:2px;}
   .logo-mark{width:28px;height:28px;font-size:11px;}
@@ -402,21 +434,23 @@ button{cursor:pointer;}
   .gi{min-width:68px;margin-bottom:0;flex-shrink:0;text-align:center;}
   .gi-cat,.gi-new{display:none;}
   .arc-body{flex-direction:column;}
-  #thm-panel{width:100%;border-radius:12px 12px 0 0;border-right:1px solid var(--border);top:auto;bottom:48px;transform:translateY(100%);}
+  #thm-panel{width:100%;border-radius:12px 12px 0 0;border-right:1px solid var(--border);top:auto;bottom:calc(48px + var(--ftH));transform:translateY(calc(100% + 48px + var(--ftH)));}
   #thm-panel.on{transform:translateY(0);}
   .thm-grid{grid-template-columns:repeat(5,1fr);}
   .to-sb{display:none;}
-  #arcade-fab{bottom:56px;right:12px;width:44px;height:44px;font-size:18px;}
-  #acht{bottom:56px;}
-  #footer{bottom:48px;}
+  #arcade-fab{bottom:calc(56px + var(--ftH));right:12px;width:44px;height:44px;font-size:18px;}
+  #acht{bottom:calc(56px + var(--ftH));}
+  #footer{bottom:0;padding:0 10px;}
+  .ft-l{gap:10px;}
   .fmodal{padding:0;}
   .fbox{width:100%;height:100%;border-radius:0;max-height:100%;}
   #mob-nav{display:flex;}
 }
 @media(max-width:380px){.ck{min-height:46px;font-size:13px;}.logo-name{display:none;}.thm-grid{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:440px){.ft-txt,.ft-l .ft-sep{display:none;}}
 
 /* Mobile nav */
-#mob-nav{display:none;position:fixed;bottom:24px;left:0;right:0;height:48px;z-index:200;background:rgba(2,4,8,0.97);border-top:1px solid var(--border);backdrop-filter:blur(20px);align-items:stretch;}
+#mob-nav{display:none;position:fixed;bottom:var(--ftH);left:0;right:0;height:48px;z-index:200;background:rgba(2,4,8,0.97);border-top:1px solid var(--border);backdrop-filter:blur(20px);align-items:stretch;}
 .mnb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:none;background:transparent;color:var(--textd);font-size:17px;transition:all 0.2s;border-top:2px solid transparent;}
 .mnb.on{color:var(--acc);border-top-color:var(--acc);}
 .mnb span{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:0.5px;color:inherit;}
@@ -444,6 +478,7 @@ button{cursor:pointer;}
   <div class="ld-dots"><div class="ld-dot"></div><div class="ld-dot"></div><div class="ld-dot"></div></div>
   <div class="ld-prog"><div class="ld-fill" id="ldFill"></div></div>
   <div class="ld-msg" id="ldMsg">Booting systems...</div>
+  <div class="ld-by"><span>BUILT BY</span><svg class="" viewBox="0 0 66 92" aria-hidden="true"><defs><linearGradient id="nxgL" x1="0" y1="0" x2="66" y2="60" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00C3F3"/><stop offset=".55" stop-color="#00A2DC"/><stop offset="1" stop-color="#006AB1"/></linearGradient></defs><g fill="url(#nxgL)"><rect x="0" y="0" width="10" height="92"/><rect x="14" y="0" width="10" height="92"/><rect x="28" y="0" width="10" height="92"/><rect x="42" y="0" width="10" height="66"/><rect x="56" y="0" width="10" height="66"/></g></svg><b>NEXLYR</b></div>
 </div>
 
 <!-- DECORATIVE -->
@@ -611,12 +646,24 @@ button{cursor:pointer;}
 
 <!-- FOOTER -->
 <div id="footer">
-  <span class="ft-txt">YKW Calculator</span>
-  <div class="ft-sep"></div>
-  <a class="ft-link" href="https://www.instagram.com/hashirykw?igsh=czZnYnc3czQxeXF0" target="_blank" rel="noopener">
+  <div class="ft-l">
+    <span class="ft-txt">YKW Calculator</span>
+    <div class="ft-sep"></div>
+    <a class="ft-link" href="https://www.instagram.com/hashirykw?igsh=czZnYnc3czQxeXF0" target="_blank" rel="noopener">
     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
     @hashirykw
   </a>
+  </div>
+  <div class="nxb">
+    <a class="nxb__id" href="https://nexlyr.solutions/" target="_blank" rel="noopener" aria-label="Nexlyr Solutions — the studio that built YKW Calculator">
+      <svg class="nxb__mk" viewBox="0 0 66 92" aria-hidden="true"><defs><linearGradient id="nxgF" x1="0" y1="0" x2="66" y2="60" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00C3F3"/><stop offset=".55" stop-color="#00A2DC"/><stop offset="1" stop-color="#006AB1"/></linearGradient></defs><g fill="url(#nxgF)"><rect x="0" y="0" width="10" height="92"/><rect x="14" y="0" width="10" height="92"/><rect x="28" y="0" width="10" height="92"/><rect x="42" y="0" width="10" height="66"/><rect x="56" y="0" width="10" height="66"/></g></svg>
+      <span class="nxb__nm">NEXLYR</span>
+    </a>
+    <a class="nxb__go" target="_blank" rel="noopener" href="https://wa.me/923053687680?text=Hi%20Nexlyr!%20I%20saw%20the%20YKW%20Calculator%20and%20I%27d%20like%20to%20work%20with%20you." aria-label="Connect with Nexlyr on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.14 6.44 2.14 11.9c0 1.75.46 3.45 1.32 4.95L2.05 22l5.28-1.38a9.86 9.86 0 0 0 4.71 1.2c5.46 0 9.9-4.44 9.9-9.9S17.5 2 12.04 2zm5.8 14.06c-.24.68-1.4 1.3-1.94 1.35-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.650-.61-2.9-1.25-4.8-4.17-4.95-4.37-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.26-.29.58-.36.77-.36l.55.01c.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.15.12.32.02.51-.09.2-.14.32-.28.49l-.42.49c-.14.14-.28.29-.12.57.16.29.72 1.18 1.54 1.91 1.06.94 1.95 1.23 2.23 1.37.28.15.44.12.6-.07.17-.2.7-.81.88-1.09.19-.29.37-.24.63-.14.25.09 1.62.76 1.9.9.28.15.46.22.53.34.07.12.07.68-.17 1.34z"/></svg>
+      Connect
+    </a>
+  </div>
 </div>
 
 <!-- MAIN APP -->
@@ -1554,7 +1601,7 @@ async function sendAI(){
   const typ=document.createElement('div');typ.className='msg ai';typ.innerHTML=`<div class="av">🤖</div><div class="bub"><div class="typing"><div class="tyd"></div><div class="tyd"></div><div class="tyd"></div></div></div>`;chat.appendChild(typ);chat.scrollTop=chat.scrollHeight;
   aiHist.push({role:'user',content:msg});
   try{
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:`You are Amy, the intelligent AI assistant inside YKW Calculator — a scientific computing platform. Be warm, accurate, helpful. For math: show step-by-step working. For science: give clear explanations. Use Unicode math symbols: ∫ ∑ ∂ π √ ². Keep responses clear and not too long.`,messages:aiHist.slice(-16)})});
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:`You are Amy, the intelligent AI assistant inside YKW Calculator — a scientific computing platform. Be warm, accurate, helpful. For math: show step-by-step working. For science: give clear explanations. Use Unicode math symbols: ∫ ∑ ∂ π √ ². Keep responses clear and not too long. If asked who made or built YKW Calculator: it was built by Hashir at Nexlyr Solutions (nexlyr.solutions), a digital agency.`,messages:aiHist.slice(-16)})});
     const data=await resp.json();const text=data.content?.[0]?.text||'Try again!';
     aiHist.push({role:'assistant',content:text});typ.remove();
     const ad=document.createElement('div');ad.className='msg ai';ad.innerHTML=`<div class="av">🤖</div><div class="bub">${fmt(text)}</div>`;chat.appendChild(ad);chat.scrollTop=chat.scrollHeight;
@@ -1572,6 +1619,7 @@ function localAns(q){
   if(lo.includes('prime'))return '**Prime numbers:** integers > 1 with no factors except 1 and themselves.\n\nFirst 10: **2, 3, 5, 7, 11, 13, 17, 19, 23, 29**\n\nInfinitely many primes (Euclid ~300 BCE).';
   if(lo.includes('matrix'))return '**Matrix** — rectangular array of numbers.\n\n• **det([[a,b],[c,d]])** = ad − bc\n• **Inverse:** A⁻¹ satisfies A·A⁻¹ = I\n• **Eigenvalues:** det(A−λI) = 0';
   if(lo.includes('quadratic'))return '**Quadratic Formula:** For ax² + bx + c = 0:\n\nx = (−b ± √(b²−4ac)) / 2a\n\nDiscriminant (b²−4ac): > 0 → 2 real roots, = 0 → 1 root, < 0 → complex roots';
+  if(/who (made|built|created|developed|designed)|your (creator|developer|maker)|nexlyr/.test(lo))return "YKW Calculator was built by **Hashir** at **Nexlyr Solutions** — a digital agency for websites, AI chatbots, branding and more.\n\nSee more at **nexlyr.solutions** 🚀";
   if(lo.includes('hello')||lo.includes('hi '))return "Hi there! 👋 I'm **Amy**, your AI math assistant. Ask me anything about math, science, or any topic you're curious about!";
   return `I'm **Amy**, your AI assistant inside YKW Calculator!\n\nI can help with:\n• **Math problems** — calculus, algebra, statistics\n• **Science questions** — physics, chemistry\n• **General knowledge** — any topic!\n\n*(Connect the Claude API for full AI responses on anything)*`;
 }
@@ -1586,7 +1634,7 @@ async function sendAIMob(){
   const typ=document.createElement('div');typ.className='msg ai';typ.innerHTML=`<div class="av">🤖</div><div class="bub"><div class="typing"><div class="tyd"></div><div class="tyd"></div><div class="tyd"></div></div></div>`;chat.appendChild(typ);chat.scrollTop=chat.scrollHeight;
   aiHist.push({role:'user',content:msg});
   try{
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:'You are Amy, AI assistant inside YKW Calculator. Be warm, accurate, concise. Use Unicode math.',messages:aiHist.slice(-10)})});
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:'You are Amy, AI assistant inside YKW Calculator. Be warm, accurate, concise. Use Unicode math. If asked who built YKW Calculator: Hashir at Nexlyr Solutions (nexlyr.solutions).',messages:aiHist.slice(-10)})});
     const data=await resp.json();const text=data.content?.[0]?.text||'Try again!';
     aiHist.push({role:'assistant',content:text});typ.remove();
     const ad=document.createElement('div');ad.className='msg ai';ad.innerHTML=`<div class="av">🤖</div><div class="bub">${fmt(text)}</div>`;chat.appendChild(ad);chat.scrollTop=chat.scrollHeight;
@@ -2445,7 +2493,7 @@ function initAll(){
   function adjMob(){
     const mob=window.innerWidth<=680;
     $('mob-nav').style.display=mob?'flex':'none';
-    $('app').style.height=mob?'calc(100vh - 72px)':'calc(100vh - 24px)';
+    $('app').style.height=mob?'calc(100vh - 48px - var(--ftH))':'calc(100vh - var(--ftH))';
   }
   adjMob();
   setTimeout(()=>{resizeMinis();drawMinis();},200);
